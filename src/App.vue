@@ -17,7 +17,7 @@
         
         <div v-for="status in statuses" class="notification" v-bind:class="{'is-danger': status.status=='OFFLINE', 'is-success':status.status!='OFFLINE'}" :key="status._id">
           Status: {{status.status}} <span> - </span>
-          Quando: {{status.date}}
+          {{ formatDate(status.date) }}
         </div>
       </div>
     </section>
@@ -39,16 +39,9 @@
   </div>
 </template>
 
-<!-- <div v-for="joke in jokes" :key="joke._id">
-           <div class="col-md-4 cards">
-             <div>
-               {{joke}}
-             </div>
-           </div>
-         </div> -->
-
 <script>
 import axios from 'axios';
+import moment from 'moment';
 
 export default {
   name: 'app',
@@ -73,6 +66,10 @@ export default {
         console.log(error);
       }
       )
+    },
+    formatDate: function(dateValue){
+      moment.locale('pt-Br');
+      return moment(dateValue).format('DD/MM/YYYY, h:mm:ss');
     }
   },
   created: function(){
