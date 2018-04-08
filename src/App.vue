@@ -6,12 +6,18 @@
     <main>    
       <section class="section">
       <div class="container">
-        <h1 class="title">
-          Sistemas Quixadá - Status:
-        </h1>
+        <div class="columns">
+          <h1 class="title column">
+            Sistemas Quixadá - Status:
+          </h1>
+          <h2 class="notification is-danger column is-two-fifths" v-if="error">
+            Problem connecting to backend!
+          </h2>
+        </div>
         
-        <div class="notification is-danger">
-        AHAHAHAHA
+        <div v-for="status in statuses" class="notification" v-bind:class="{'is-danger': status.status=='OFFLINE', 'is-success':status.status!='OFFLINE'}" :key="status._id">
+          Status: {{status.status}} <span> - </span>
+          Quando: {{status.date}}
         </div>
       </div>
     </section>
@@ -50,6 +56,7 @@ export default {
     return {
       loading: false,
       statuses: [],
+      error: false,
     }
   },
   methods: {
@@ -62,6 +69,7 @@ export default {
         console.log(response.data);
       }, (error) => {
         this.loading=false;
+        this.error=true;
         console.log(error);
       }
       )
