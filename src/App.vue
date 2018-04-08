@@ -15,9 +15,10 @@
           </h2>
         </div>
         
-        <div v-for="status in statuses" class="notification" v-bind:class="{'is-danger': status.status=='OFFLINE', 'is-success':status.status!='OFFLINE'}" :key="status._id">
-          Status: {{status.status}} <span> - </span>
-          {{ formatDate(status.date) }}
+        <div v-for="status in statuses" class="notification" v-bind:class="{'is-danger': status.status=='OFFLINE', 'is-success':status.status=='ONLINE', 'is-warning':status.status=='PROBLEM'}" :key="status._id">
+          Status: <strong> {{status.status}} </strong> <span> - </span>
+          {{ formatDate(status.date) }} <span> - </span>
+          URL: {{status.address}}
         </div>
       </div>
     </section>
