@@ -56,7 +56,7 @@ export default {
   methods: {
     getStatuses: function(){
       this.loading  = true;
-      axios.get("https://magnolia-backend-app.herokuapp.com/")
+      axios.get("https://magnolia-backend-app.herokuapp.com/status")
       .then((response) => {
         this.loading = false;
         this.statuses = response.data;
