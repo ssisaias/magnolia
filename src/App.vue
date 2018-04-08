@@ -70,7 +70,7 @@ export default {
     },
     formatDate: function(dateValue){
       moment.locale('pt-Br');
-      return moment(dateValue).format('DD/MM/YYYY, h:mm:ss');
+      return moment(dateValue).format('DD/MM/YYYY, HH:mm:ss');
     }
   },
   created: function(){
