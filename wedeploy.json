@@ -1,4 +1,4 @@
 {
-    "id": "eab44108-3b6a-11e8-b467-0ed5f89f718b",
-    "image": "wedeploy/hosting:2.0.0"
+    "id": "magnolia-0ed5f89f718b",
+    "port": 8080
 }
